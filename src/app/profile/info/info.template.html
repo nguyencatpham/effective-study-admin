@@ -1,0 +1,106 @@
+<form [formGroup]="frm" (submit)="onSubmit()">
+  <div class="row">
+    <div class="col-lg-8 form-container">
+      
+
+      <div class="row flex py-1" [ngClass]="{'required': true}">
+        <div class="col-sm-3 control-label text-right">
+          <label>First Name</label>
+        </div>
+        <div class="col-sm-7" [ngClass]="{'has-error':!frm.get('firstName').valid && !frm.get('firstName').pristine}">
+          <input formControlName='firstName' type="text" placeholder="First Name" class="form-control">
+          <label class="error" *ngIf="frm.get('firstName').hasError('required') && !frm.get('firstName').pristine">
+            First name is required
+          </label>
+        </div>
+      </div>
+
+      <div class="row flex py-1" [ngClass]="{'required': true}">
+        <div class="col-sm-3 control-label text-right">
+          <label>Last Name</label>
+        </div>
+        <div class="col-sm-7" [ngClass]="{'has-error':!frm.get('lastName').valid && !frm.get('lastName').pristine}">
+          <input formControlName='lastName' type="text" placeholder="Last Name" class="form-control">
+          <label class="error" *ngIf="frm.get('lastName').hasError('required') && !frm.get('lastName').pristine">
+            Last name is required
+          </label>
+        </div>
+      </div>
+
+      <div *ngIf="showChangePassword">
+        <div class="row flex py-1" [ngClass]="{'required': true}">
+          <div class="col-sm-3 control-label text-right">
+            <label>Password</label>
+          </div>
+          <div class="col-sm-7" [ngClass]="{'has-error':!frm.get('password').valid && !frm.get('password').pristine}">
+            <input formControlName='password' type="password" placeholder="Password" class="form-control">
+            <label class="error" *ngIf="frm.get('password').hasError('required') && !frm.get('password').pristine">
+              Password is required.
+            </label>
+          </div>
+        </div>
+        <div class="row flex py-1" [ngClass]="{'required': true}">
+          <div class="col-sm-3 control-label text-right">
+            <label>Confirm Password</label>
+          </div>
+          <div class="col-sm-7" [ngClass]="{'has-error':!frm.get('confirmPassword').valid && !frm.get('confirmPassword').pristine}">
+            <input formControlName='confirmPassword' type="password" placeholder="Confirm Password" class="form-control">
+            <label class="error" *ngIf="frm.get('confirmPassword').hasError('required') && !frm.get('confirmPassword').pristine">
+              Confirm password is required
+            </label>
+            <label class="error" *ngIf="!frm.get('confirmPassword').hasError('required') && frm.get('confirmPassword').hasError('nomatch') && !frm.get('confirmPassword').pristine">
+              Confirm password not match
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row flex py-1" [ngClass]="{'required': true}">
+        <div class="col-sm-3 control-label text-right">
+          <label>Phone</label>
+        </div>
+        <div class="col-sm-7" [ngClass]="{'has-error':!frm.get('phoneNumber').valid && !frm.get('phoneNumber').pristine}">
+          <input formControlName='phoneNumber' type="text" placeholder="Phone" class="form-control">
+          <label class="error" *ngIf="frm.get('phoneNumber').hasError('required') && !frm.get('phoneNumber').pristine">
+            Phone number is required
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="p-t-15">
+        <div class="row justify-center m-t-35">
+          <img [src]="frm.get('imageUrl').value || '../../assets/img/no-avatar.png'" width="300" height="300" imgZoomClick/>
+        </div>
+        <div class="row justify-center mt-3">
+          <div *ngIf="!frm.get('imageUrl').value">
+            <label class="btn btn-primary btn-file">
+              Browse <input type="file" ng2FileSelect [uploader]="uploader" (change)="uploadAvatar()"/>
+            </label>
+          </div>
+          <div *ngIf="frm.get('imageUrl').value">
+            <label class="btn btn-warning btn-file">
+              Change <input type="file" ng2FileSelect [uploader]="uploader" (change)="uploadAvatar()"/>
+            </label>
+            <button type="button" class="btn btn-danger" (click)="removeAvatar()">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-t-20">
+    <div class="col-lg-8">
+      <div class="row justify-center">
+        <div class="col-lg-3 col-sm-1 col-1"></div>
+        <div class="col-lg-7 col-sm-12 col-12">
+          <button class="btn btn-complete btn-cons pull-left m-r-5" type="submit" [disabled]="!userData">Save</button>
+          <button class="btn btn-default btn-cons pull-left" type="button" (click)="cancel()">Cancel</button>
+          <button class="btn btn-warning btn-cons pull-right" type="button" (click)="changePassword()" *ngIf="!showChangePassword">
+            Change Password
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

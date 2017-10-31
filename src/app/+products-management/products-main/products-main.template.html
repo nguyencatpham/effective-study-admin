@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-sm-12 col-md-7 col-lg-6 m-b-10">
+    <div class="input-icon">
+      <input-debounce placeholder="Start typing to search products by name, company, email, orders placed"
+                      title="Start typing to search products by name, company, email, orders placed"
+                      (value)="onSearchChanged($event)" [inputValue]="searchText"></input-debounce>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-5 col-lg-6 m-b-10">
+    <button type="button" class="pull-right btn btn-warning" (click)="download()">
+      <i class="fa fa-download" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="pull-right btn btn-complete btn-cons m-r-5" onclick="document.getElementById('fileImportProducts').click();">Import</button>
+    <input id="fileImportProducts" type="file" ng2FileSelect [uploader]="uploader"
+           (change)="import()" hidden="hidden"/>
+    <button type="button" class="pull-right btn btn-success btn-cons m-r-5" (click)="addNewProduct()">New Product</button>
+  </div>
+</div>
+
+<ng-container *ngTemplateOutlet="pagination"></ng-container>
+<div class="table-wrapper" #tableWrapper>
+<ngx-datatable #table
+               class="material striped ngx-table-hover"
+               [rows]="productData.data"
+               [columnMode]="'force'"
+               [footerHeight]="0"
+               [headerHeight]="'35'"
+               [rowHeight]="'auto'"
+               [externalSorting]="true"
+               [loadingIndicator]="tableConfig.loading"
+               (activate)="onActivate($event)"
+               [sorts]="[{prop: 'name', dir: 'asc'}]"
+               (sort)="onSort($event)">
+  <ngx-datatable-column
+    [name]="'IMAGE'"
+    [prop]="'imageUrl'"
+    [width]="300"
+    [draggable]="false"
+    [resizeable]="false">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      <img class="ngx-table-thum" [src]="value" />
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'NAME'"
+    [prop]="'name'"
+    [width]="300"
+    [draggable]="false"
+    [resizeable]="false">
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'PRICE'"
+    [prop]="'price'"
+    [width]="300"
+    [draggable]="false"
+    [resizeable]="false">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <div>
+        {{ value | number}}
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>
+</div>
+<ng-container *ngTemplateOutlet="pagination"></ng-container>
+
+<ng-template #pagination>
+  <pagination-control [totalRecord]="productData.totalRecord"
+                      [pageSize]="tableConfig.pageSize"
+                      [currentPage]="tableConfig.currentPage"
+                      (onSelectedPageSize)="onSelectedPageSize($event)"
+                      (onPageChange)="onPageChange($event)"></pagination-control>
+</ng-template>

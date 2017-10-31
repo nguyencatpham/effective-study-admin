@@ -1,0 +1,16 @@
+create-or-update-user {
+  display: block;
+  .form-container {
+    .row {
+      justify-content: center;
+    }
+    .py-1 {
+      padding-top: 5px;
+    }
+  }
+
+  .top-title {
+    position: absolute;
+    top: 5px;
+  }
+}

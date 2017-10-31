@@ -1,0 +1,37 @@
+.nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  >li {
+    position: relative;
+    display: block;
+  }
+}
+
+.nav-tabs {
+  margin: 0;
+  border-bottom: 1px solid #ddd;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  >li {
+    float: left;
+    border-top: 3px solid transparent;
+    margin-bottom: -2px;
+    margin-right: 5px;
+    &.active {
+      border-top-color: #3c8dbc;
+      >a {
+        border-right: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        padding: 10px 15px;
+      }
+    }
+  }
+}
+
+.tab-content {
+  background: #fff;
+  padding: 10px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}

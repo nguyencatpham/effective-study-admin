@@ -1,0 +1,79 @@
+<form [formGroup]="frm" role="form" novalidate="" (ngSubmit)="onSubmitForm()">
+  <div class="row m-t-15">
+    <div class="col-md-10">
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Rate</label>
+        </div>
+        <div class="col-sm-8">
+          {{ chefData?.rate || 0 }}
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Count Rate</label>
+        </div>
+        <div class="col-sm-8">
+          {{ chefData?.countRate || 0 }}
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Facebook Link</label>
+        </div>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName='facebookLink'>
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Short Bio</label>
+        </div>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName='shortBio'>
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Bio</label>
+        </div>
+        <div class="col-sm-8">
+          <app-tinymce formControlName='bio'></app-tinymce>
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Company</label>
+        </div>
+        <div class="col-sm-8">
+          <app-tinymce formControlName='company'></app-tinymce>
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Certification</label>
+        </div>
+        <div class="col-sm-8">
+          <app-tinymce formControlName='certification'></app-tinymce>
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Expriences</label>
+        </div>
+        <div class="col-sm-8">
+          <app-tinymce formControlName='experiences'></app-tinymce>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <hr />
+      <button type="button" class="btn btn-default pull-right" (click)="cancel()">Cancel</button>
+      <!--<button class="btn btn-danger pull-right m-r-5" type="button" (click)="delete()">Delete</button>-->
+      <button class="btn btn-complete pull-right m-r-5" type="submit" [disabled]="frm.invalid">Save</button>
+    </div>
+  </div>
+</form>

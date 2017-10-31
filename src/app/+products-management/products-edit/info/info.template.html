@@ -1,0 +1,113 @@
+<form [formGroup]="frm" role="form" novalidate="" (ngSubmit)="onSubmitForm()">
+  <div class="row m-t-15">
+    <div class="col-md-10">
+      <div class="row m-t-5" [ngClass]="{'required': true}">
+        <div class="col-sm-4 control-label text-right">
+          <label>Name</label>
+        </div>
+        <div class="col-sm-8" [ngClass]="{'has-error':!frm.get('name').valid && !frm.get('name').pristine}">
+          <input class="form-control" formControlName='name' type="text" placeholder="Name">
+          <label class="error" *ngIf="frm.get('name').hasError('required') && !frm.get('name').pristine">
+            {{validationMessages['name'].required}}
+          </label>
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Short Description</label>
+        </div>
+        <div class="col-sm-8">
+          <!--<input class="form-control" formControlName='shortDescription' type="text" placeholder="Short Description">-->
+          <textarea class="form-control" formControlName='shortDescription' rows='4'
+                    type="text" placeholder="Short Description"></textarea>
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Description</label>
+        </div>
+        <div class="col-sm-8">
+          <!--<input class="form-control" formControlName='description' type="text" placeholder="Description">-->
+          <!--<textarea class="form-control" formControlName='description' rows='4'-->
+          <!--type="text" placeholder="Description"></textarea>-->
+          <app-tinymce formControlName='description'></app-tinymce>
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Prepairation</label>
+        </div>
+        <div class="col-sm-8">
+          <app-tinymce formControlName='prepairation'></app-tinymce>
+        </div>
+      </div>
+      <div class="row m-t-5" [ngClass]="{'required': true}">
+        <div class="col-sm-4 control-label text-right">
+          <label>Price</label>
+        </div>
+        <div class="col-sm-8" [ngClass]="{'has-error':!frm.get('price').valid && !frm.get('price').pristine}">
+          <input class="form-control" formControlName='price' type="number" placeholder="Price">
+          <label class="error" *ngIf="frm.get('price').hasError('required') && !frm.get('price').pristine">
+            {{validationMessages['price'].required}}
+          </label>
+        </div>
+      </div>
+      <div class="row m-t-5" [ngClass]="{'required': true}">
+        <div class="col-sm-4 control-label text-right">
+          <label>Old Price</label>
+        </div>
+        <div class="col-sm-8" [ngClass]="{'has-error':!frm.get('oldPrice').valid && !frm.get('oldPrice').pristine}">
+          <input class="form-control" formControlName='oldPrice' type="number" placeholder="Old Price">
+          <label class="error" *ngIf="frm.get('oldPrice').hasError('required') && !frm.get('oldPrice').pristine">
+            {{validationMessages['oldPrice'].required}}
+          </label>
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Is Published</label>
+        </div>
+        <div class="col-sm-8">
+          <input formControlName='isPublished' type="checkbox" class="m-t-5" />
+        </div>
+      </div>
+      <div class="row m-t-5" [ngClass]="{'required': true}">
+        <div class="col-sm-4 control-label text-right">
+          <label>CategoryId</label>
+        </div>
+        <div class="col-sm-8" [ngClass]="{'has-error':!frm.get('categoryId').valid && !frm.get('categoryId').pristine}">
+          <select formControlName='categoryId' class="form-control">
+            <option value="">Select Category</option>
+            <option *ngFor="let c of categories" [ngValue]="c.id">{{c.name}}</option>
+          </select>
+          <label class="error" *ngIf="frm.get('categoryId').hasError('required') && !frm.get('categoryId').pristine">
+            {{validationMessages['categoryId'].required}}
+          </label>
+        </div>
+      </div>
+      <div class="row m-t-5" [ngClass]="{'required': true}">
+        <div class="col-sm-4 control-label text-right">
+          <label>Chef</label>
+        </div>
+        <div class="col-sm-8" [ngClass]="{'has-error':!frm.get('chefId').valid && !frm.get('chefId').pristine}">
+          <select formControlName='chefId' class="form-control">
+            <option value="">Select Chef</option>
+            <option *ngFor="let c of chefs" [ngValue]="c.id">{{c.fullName}}</option>
+          </select>
+          <label class="error" *ngIf="frm.get('chefId').hasError('required') && !frm.get('chefId').pristine">
+            {{validationMessages['chefId'].required}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <hr />
+      <button type="button" class="btn btn-default pull-right" (click)="cancel()">Cancel</button>
+      <!--<button class="btn btn-danger pull-right m-r-5" type="button" (click)="delete()">Delete</button>-->
+      <button class="btn btn-complete pull-right m-r-5" type="submit" [disabled]="frm.invalid">Save</button>
+    </div>
+  </div>
+</form>

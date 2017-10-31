@@ -1,9 +1,9 @@
-import path from 'path'
+var path = require('path');
 
 const EVENT =process.env.npm_lifecycle_event || ''
 const ROOT = path.resolve(__dirname, '..')
 
-export default {
+module.exports = {
     root:path.join.bind(path, ROOT),
     hasProcessFlag: (flag)=>{
         return process.argv.join('').indexOf(flag) > -1;

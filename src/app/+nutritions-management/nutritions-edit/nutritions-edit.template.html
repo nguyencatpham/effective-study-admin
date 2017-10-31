@@ -1,0 +1,26 @@
+<form [formGroup]="frm" role="form" novalidate="" (ngSubmit)="onSubmitForm()">
+  <div class="row">
+    <div class="col-md-10">
+      <!--Name-->
+      <div class="row m-t-5" [ngClass]="{'required': true}">
+        <div class="col-sm-4 control-label text-right">
+          <label>Nutrition Name</label>
+        </div>
+        <div class="col-sm-8" [ngClass]="{'has-error':!frm.get('name').valid && !frm.get('name').pristine}">
+          <input formControlName='name' type="text" placeholder="nutrition's name" class="form-control">
+          <label class="error" *ngIf="frm.get('name').hasError('required') && !frm.get('name').pristine">
+            {{validationMessages['name'].required}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <hr />
+      <button class="btn btn-default pull-right" (click)="cancel()">Cancel</button>
+      <button class="btn btn-complete pull-right m-r-5" type="submit" [disabled]="frm.invalid">Save</button>
+    </div>
+  </div>
+</form>

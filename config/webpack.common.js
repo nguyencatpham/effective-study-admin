@@ -1,21 +1,22 @@
-import webpack from 'webpack'
-import heplers from './helper'
+const webpack = require('webpack');
+const helpers = require('./helper');
 
 /*
  * Webpack Plugins
  */
 // problem with copy-webpack-plugin
-import AssetsPlugin from 'assets-webpack-plugin'
-import NormalModuleReplacementPlugin from 'webpack/lib/NormalModuleReplacementPlugin'
-import ContextReplacementPlugin from 'webpack/lib/ContextReplacementPlugin'
-import CommonsChunkPlugin from 'webpack/lib/optimize/CommonsChunkPlugin'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
-import {CheckerPlugin} from 'awesome-typescript-loader'
-import HtmlElementsPlugin from './html-elements-plugin'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import LoaderOptionsPlugin from 'webpack/lib/LoaderOptionsPlugin'
-import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
-import ngcWebpack from 'ngc-webpack'
+const AssetsPlugin = require('assets-webpack-plugin');
+const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
+const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
+const HtmlElementsPlugin = require('./html-elements-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const ngcWebpack = require('ngc-webpack');
+
 
 /*
  * Webpack Constants
@@ -32,7 +33,7 @@ const METADATA = {
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-export default (options)=>({
+module.exports = (options)=>({
     /*
      * Cache generated modules and chunks to improve performance for multiple incremental builds.
      * This is enabled by default in watch mode.
@@ -106,8 +107,8 @@ export default (options)=>({
                     {
                       loader: '@angularclass/hmr-loader',
                       options: {
-                        pretty: !isProd,
-                        prod: isProd
+                        pretty: true,
+                         prod: false
                       }
                     },
                     { // MAKE SURE TO CHAIN VANILLA JS CODE, I.E. TS COMPILATION OUTPUT.
@@ -265,7 +266,7 @@ export default (options)=>({
                   {from: 'src/assets', to: 'assets'},
                   {from: 'src/meta'}
                 ],
-                isProd ? {ignore: ['mock-data/**/*']} : undefined
+                undefined
               ),
         
         
@@ -319,7 +320,7 @@ export default (options)=>({
                * Dependencies: HtmlWebpackPlugin
                */
               new HtmlElementsPlugin({
-                headTags: require('./head-config.common')
+                headTags: require('./head-config')
               }),
         
               /**

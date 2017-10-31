@@ -1,0 +1,84 @@
+.sm-gutter {
+  overflow: visible !important;
+}
+
+.form-control {
+  font-size: 12px !important;
+  border-radius: 4px !important;
+  min-height: 30px !important;
+  height: 30px !important;
+  &:focus {
+    background-color: #fff !important;
+  }
+}
+
+select.form-control{
+  padding-left: 10px;
+  padding-right: 15px;
+}
+
+textarea{
+  &.form-control{
+    height: auto !important;
+  }
+}
+
+.required {
+  .control-label {
+    label {
+      &:after {
+        content: '*';
+        color: red;
+        padding-left: 0.5em;
+      }
+    }
+  }
+}
+
+.control-label {
+  > label {
+    position: relative;
+    padding-right: 10px;
+    &:after {
+      position: absolute;
+      padding: 0;
+      right: 0;
+    }
+  }
+}
+
+.form-detail {
+  width: 100%;
+  padding: 2px 45px 0 0 !important;
+  position: relative;
+  > label {
+    width: 100%;
+    border-bottom: 1px solid #626262;
+    padding-bottom: 2px;
+  }
+  > .btn {
+    position: absolute;
+    right: 0;
+    top: 4px;
+  }
+}
+
+.img-thumbnail-none-wh {
+  padding: 0.15em;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="checkbox"]:focus + label:before {
+  background-color: #fff !important;
+}
+
+.has-error {
+  my-date-picker {
+    .mydp {
+      border-color: red;
+    }
+  }
+}

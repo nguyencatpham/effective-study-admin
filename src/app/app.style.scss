@@ -1,0 +1,18 @@
+.ps-container>.ps-scrollbar-y-rail {
+    z-index: 20;
+}
+
+ng-sidebar-container {
+    overflow: hidden;
+    ng-sidebar {
+        >aside {
+            position: fixed !important;
+        }
+    }
+}
+
+input:-webkit-autofill:focus {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+}

@@ -1,0 +1,21 @@
+<div class="rating-container" *ngFor="let item of ratings">
+  <div class="rating-info">
+    <div class="image-container">
+      <img class="img-fluid" [src]="item.imageUrl">
+    </div>
+    <div [innerHTML]="item.name" class="rating-name m-t-5"></div>
+  </div>
+  <div class="rating-comment">
+    <div class="rating-user">{{item.firstName + ' ' + item.lastName}}</div>
+    <div class="rating-date m-b-5" [innerHTML]="item.createdAt | date:'dd/MM/yyyy HH:mm a'"></div>
+
+    <div class="rating-icon">
+      <star-rating-comp [starType]="'svg'"
+                        [hoverEnabled]="false"
+                        [rating]="item.point || '0'" [disabled]="true">
+      </star-rating-comp>
+    </div>
+
+    <div class="rating-content" [innerHTML]="item.comment"></div>
+  </div>
+</div>

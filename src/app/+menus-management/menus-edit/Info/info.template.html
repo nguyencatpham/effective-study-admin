@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-md-10">
+    <div class="row m-t-15">
+      <div class="col-sm-5 control-label text-right">
+        <label>Applied Date</label>
+      </div>
+      <div class="col-sm-4">
+        <my-date-picker [options]="appliedAtOptions" required
+                        [(ngModel)]='dateModel'></my-date-picker>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-complete m-l-15" type="submit" (click)="onSubmitForm()">Save</button>
+        <button class="btn btn-default m-l-10" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <!--<div class="col-md-4 text-right">
+    <button class="btn btn-success btn-lg m-t-10 m-r-15" (click)="addProduct()">Add Product</button>
+  </div>-->
+</div>
+<hr />
+<div class="m-b-5">
+  <strong>Count: {{menuInfo?.productQuantity}}</strong>
+</div>
+<div class="table-wrapper" #tableWrapper>
+  <ngx-datatable #table
+              class="material striped ngx-table-hover"
+              [rows]="products"
+              [columnMode]="'force'"
+              [footerHeight]="0"
+              [headerHeight]="'35'" (activate)="onActivate($event)"
+              [rowHeight]="'auto'">
+    <ngx-datatable-column
+      [name]="'Image'"
+      [prop]="'imageUrl'"
+      [width]="250"
+      [draggable]="false"
+      [resizeable]="false">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <img class="ngx-table-thum" [src]="value" />
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column
+      [name]="'Name'"
+      [prop]="'name'"
+      [width]="300"
+      [draggable]="false"
+      [resizeable]="false">
+    </ngx-datatable-column>
+    <ngx-datatable-column
+      [name]="'Quantity'"
+      [prop]="'quantity'"
+      [width]="100"
+      [draggable]="false"
+      [resizeable]="false">
+      <template let-column="column" ngx-datatable-header-template>
+        Quantity ({{menuInfo?.sumQuantity}})
+      </template>
+    </ngx-datatable-column>
+    <ngx-datatable-column
+      [name]="'PRICE'"
+      [prop]="'price'"
+      [width]="300"
+      [draggable]="false"
+      [resizeable]="false">
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <div>
+          {{ value | number}}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column
+      [name]="'Action'"
+      [width]="200"
+      [prop]="'id'"
+      [draggable]="false"
+      [resizeable]="false">
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <input class="btn btn-warning" type="button" (click)="removeProduct(row)" value="Remove">
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</div>

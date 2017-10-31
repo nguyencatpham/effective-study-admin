@@ -1,0 +1,110 @@
+sidebar {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sidebar-menu {
+  .menu-items {
+    li {
+      a.active {
+        color: #d8d8d8;
+      }
+      a.active {
+        .icon-thumbnail {
+          color: #d8d8d8;
+          background-color: #5cb85c !important;
+        }
+      }
+      a {
+        font-size: 13px !important;
+        width: 100% !important;
+        padding-left: 30px !important;
+        padding-right: 20px !important;
+        position: relative;
+        .title {
+          width: 100% !important;
+        }
+        .icon-thumbnail {
+          position: absolute;
+          top: 0;
+          right: 4px;
+          left: auto;
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        & > a {
+          color: #fff;
+          & > .icon-thumbnail {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.sidebar-visible {
+  nav.page-sidebar {
+    transform: translate3d(0px, 0px, 0px) !important;
+  }
+  .menu-items {
+    .icon-thumbnail {
+      transform: translate3d(0, 0, 0) !important;
+    }
+  }
+}
+
+.menu-pin {
+  i.fa-thumb-tack {
+    transform: rotate(90deg);
+  }
+  nav.page-sidebar {
+    transform: translate(210px, 0) !important;
+    -webkit-transform: translate(210px, 0) !important;
+    .sidebar-menu {
+      .menu-items {
+        li {
+          a {
+            padding-left: 65px !important;
+            .icon-thumbnail {
+              left: 15px;
+              right: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .sidebar-open {
+    nav.page-sidebar {
+      transform: translate(0, 0) !important;
+      -webkit-transform: translate(0, 0) !important;
+      .sidebar-menu {
+        .menu-items {
+          li {
+            a {
+              padding-left: 65px !important;
+              .icon-thumbnail {
+                left: 15px;
+                right: auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.visible-lg-inline {
+  @media (min-width: 992px) {
+    display: inline !important;
+  }
+}
+
+

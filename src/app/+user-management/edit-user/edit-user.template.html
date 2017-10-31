@@ -1,0 +1,12 @@
+<div class="panel panel-transparent ">
+  <ul class="nav nav-tabs">
+    <li class="text-center nav-item" *ngFor="let tab of tabs; let i=index"
+        [ngClass]="{'active': tab.isActive}"
+        (click)="switchTab($event, i)">
+      <a class="justify-center nav-link" href="javascript:void(0)" aria-expanded="true">
+        <span>{{tab.name}}</span>
+      </a>
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>

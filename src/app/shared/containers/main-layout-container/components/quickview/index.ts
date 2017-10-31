@@ -1,0 +1,1 @@
+export * from './quickview.component';

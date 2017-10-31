@@ -1,0 +1,125 @@
+<div class="table-wrapper" #tableWrapper>
+<ngx-datatable #table
+               class="material striped ngx-table-hover"
+               [rows]="productImages"
+               [columnMode]="'force'"
+               [footerHeight]="0"
+               [headerHeight]="'35'"
+               [rowHeight]="'auto'">
+  <ngx-datatable-column
+    [name]="'Picture'"
+    [prop]="'imageUrl'"
+    [width]="200"
+    [draggable]="false"
+    [resizeable]="false">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      <img class="ngx-table-thum" [src]="value" />
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'Display Order'"
+    [prop]="'displayOrder'"
+    [width]="200"
+    [draggable]="false"
+    [resizeable]="false">
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'Alt'"
+    [prop]="'alt'"
+    [width]="200"
+    [draggable]="false"
+    [resizeable]="false">
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'Title'"
+    [prop]="'title'"
+    [width]="200"
+    [draggable]="false"
+    [resizeable]="false">
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'Action'"
+    [width]="200"
+    [prop]="'id'"
+    [draggable]="false"
+    [resizeable]="false">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <button type="button" class="btn btn-success" (click)="edit(value)">Edit</button>
+      <button type="button" class="btn btn-danger" (click)="delete(value)">Delete</button>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>
+</div>
+
+<form [formGroup]="frm" role="form" novalidate="" (ngSubmit)="onSubmitForm()">
+  <div class="row m-t-15">
+    <div class="col-md-10">
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Picture</label>
+        </div>
+        <!--<div class="col-sm-8">-->
+          <!--<img class="thumb" *ngIf="model?.imageUrl" [src]="model?.imageUrl" /><br/>-->
+          <!--<label class="btn btn-primary btn-file">-->
+            <!--Browse <input type="file" ng2FileSelect [uploader]="uploader" (change)="uploadImage()"/>-->
+          <!--</label>-->
+        <!--</div>-->
+
+        <div class="col-sm-8">
+          <div class="image-container">
+            <img class="thumb" *ngIf="model?.imageUrl" [src]="model?.imageUrl" /><br/>
+            <div class="label-icon-upload-cover"></div>
+            <div class="label-icon-upload">
+              <label for="categoryUpload">
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <input id="categoryUpload" type="file" ng2FileSelect [uploader]="uploader"
+                       (change)="uploadImage()" hidden="hidden"/>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Alt</label>
+        </div>
+        <div class="col-sm-8">
+          <input class="form-control" formControlName="alt" type="text">
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Title</label>
+        </div>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="title">
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Display order</label>
+        </div>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" formControlName="displayOrder">
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Type</label>
+        </div>
+        <div class="col-sm-8">
+          <select formControlName="type" class="form-control">
+            <option value="">Select Type</option>
+            <option *ngFor="let t of imageTypes"[ngValue]="t.id">{{ t.displayName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row m-t-5 pull-right">
+        <input type="button" class="btn btn-primary m-r-10" (click)="clear()" value="Clear"/>
+        <button class="btn btn-primary" type="submit" [disabled]="!model?.imageUrl" *ngIf="model?.id">Save</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!model?.imageUrl" *ngIf="!model?.id">Add Picture</button>
+      </div>
+    </div>
+  </div>
+
+</form>

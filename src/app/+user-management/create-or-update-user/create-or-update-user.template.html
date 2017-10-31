@@ -1,0 +1,185 @@
+<form id="form-new-user"
+      [formGroup]="frm"
+      name="newUser" role="form"
+      novalidate="">
+  <div class="row">
+    <div class="col-lg-8 form-container">
+      <div class="row">
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-7">
+          <div class="checkbox">
+            <input type="checkbox" id="isActive"
+                   formControlName='isActive'>
+            <label for="isActive">Active</label>
+          </div>
+        </div>
+      </div>
+      <div class="row flex py-1"
+           [ngClass]="{'required': true}">
+        <div class="col-sm-3 control-label text-right">
+          <label>Username</label>
+        </div>
+        <div class="col-sm-7"
+             [ngClass]="{'has-error':!frm.get('userName').valid && !frm.get('userName').pristine}">
+          <input formControlName='userName'
+                 type="text"
+                 placeholder="Username"
+                 class="form-control">
+          <label class="error"
+                 *ngIf="frm.get('userName').hasError('required') && !frm.get('userName').pristine">
+            {{validationMessages['userName'].required}}</label>
+        </div>
+      </div>
+      <div *ngIf="changePasswordStatus">
+        <div class="row flex py-1"
+             [ngClass]="{'required': true}">
+          <div class="col-sm-3 control-label text-right">
+            <label>Password</label>
+          </div>
+          <div class="col-sm-7"
+               [ngClass]="{'has-error':!frm.get('password').valid && !frm.get('password').pristine}">
+            <input formControlName='password'
+                   type="password"
+                   placeholder="Password"
+                   class="form-control">
+            <label class="error"
+                   *ngIf="frm.get('password').hasError('required') && !frm.get('password').pristine">
+              {{validationMessages['password'].required}}</label>
+            <label class="error"
+                   *ngIf="frm.get('password').hasError('pattern') || frm.get('password').hasError('minlength') && !frm.get('password').pristine">
+              {{validationMessages['password'].pattern}}</label>
+          </div>
+        </div>
+        <div class="row flex py-1"
+             [ngClass]="{'required': true}">
+          <div class="col-sm-3 control-label text-right">
+            <label>Confirm Password</label>
+          </div>
+          <div class="col-sm-7"
+               [ngClass]="{'has-error':!frm.get('confirmPassword').valid && !frm.get('confirmPassword').pristine}">
+            <input formControlName='confirmPassword'
+                   type="password"
+                   placeholder="Confirm Password"
+                   class="form-control">
+            <label class="error"
+                   *ngIf="frm.get('confirmPassword').hasError('required') && !frm.get('confirmPassword').pristine">
+              {{validationMessages['password'].required}}</label>
+            <label class="error"
+                   *ngIf="!frm.get('confirmPassword').hasError('required') && frm.get('confirmPassword').hasError('nomatch') && !frm.get('confirmPassword').pristine">
+              {{validationMessages['confirmPassword'].nomatch}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="row flex py-1"
+           [ngClass]="{'required': true}">
+        <div class="col-sm-3 control-label text-right">
+          <label>Email</label>
+        </div>
+        <div class="col-sm-7"
+             [ngClass]="{'has-error':!frm.get('email').valid && !frm.get('email').pristine}">
+          <input formControlName='email'
+                 type="text"
+                 placeholder="Email"
+                 class="form-control">
+          <label class="error"
+                 *ngIf="frm.get('email').hasError('required') && !frm.get('email').pristine">
+            {{validationMessages['email'].required}}</label>
+          <label class="error"
+                 *ngIf="frm.get('email').hasError('pattern') && !frm.get('email').pristine">
+            {{validationMessages['email'].pattern}}</label>
+        </div>
+      </div>
+      <div class="row flex py-1"
+           [ngClass]="{'required': true}">
+        <div class="col-sm-3 control-label text-right">
+          <label>First Name</label>
+        </div>
+        <div class="col-sm-7"
+             [ngClass]="{'has-error':!frm.get('firstName').valid && !frm.get('firstName').pristine}">
+          <input formControlName='firstName'
+                 type="text"
+                 placeholder="First Name"
+                 class="form-control">
+          <label class="error"
+                 *ngIf="frm.get('firstName').hasError('required') && !frm.get('firstName').pristine">
+            {{validationMessages['firstName'].required}}</label>
+        </div>
+      </div>
+      <div class="row flex py-1"
+           [ngClass]="{'required': true}">
+        <div class="col-sm-3 control-label text-right">
+          <label>Last Name</label>
+        </div>
+        <div class="col-sm-7"
+             [ngClass]="{'has-error':!frm.get('lastName').valid && !frm.get('lastName').pristine}">
+          <input formControlName='lastName'
+                 type="text"
+                 placeholder="Last Name"
+                 class="form-control">
+          <label class="error"
+                 *ngIf="frm.get('lastName').hasError('required') && !frm.get('lastName').pristine">
+            {{validationMessages['lastName'].required}}</label>
+        </div>
+      </div>
+      <div class="row flex py-1"
+           [ngClass]="{'required': true}">
+        <div class="col-sm-3 control-label text-right">
+          <label>Phone</label>
+        </div>
+        <div class="col-sm-7"
+             [ngClass]="{'has-error':!frm.get('phoneNumber').valid && !frm.get('phoneNumber').pristine}">
+          <input formControlName='phoneNumber'
+                 type="text"
+                 placeholder="Phone"
+                 class="form-control">
+          <label class="error"
+                 *ngIf="frm.get('phoneNumber').hasError('required') && !frm.get('phoneNumber').pristine">
+            {{validationMessages['phoneNumber'].required}}</label>
+        </div>
+      </div>
+      <div [hidden]="!isShowRoles">
+        <div class="row flex py-1"
+             [ngClass]="{'required': true}">
+          <div class="col-sm-3 control-label text-right">
+            <label>Role(s)</label>
+          </div>
+          <div class="col-sm-7">
+            <span class="inline-block" *ngFor="let role of roleListData">
+            <div class="checkbox col-sm">
+            <input type="checkbox" [id]="role.id" #roleListElement
+                   [checked]="role.status"
+                   (change)="changeRoleStatus($event, role)">
+            <label [for]="role.id">{{role.name}}</label>
+            </div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="p-t-15">
+        <div class="row justify-center m-t-35">
+          <img [src]="frm.get('imageUrl').value || '../../assets/img/no-avatar.png'" width="300"
+               height="300" imgZoomClick/>
+        </div>
+        <div class="row justify-center mt-3">
+          <div *ngIf="!frm.get('imageUrl').value">
+            <label class="btn btn-primary btn-file">
+              Browse <input type="file" ng2FileSelect [uploader]="uploader"
+                            (change)="uploadAvatar()"/>
+            </label>
+          </div>
+          <div *ngIf="frm.get('imageUrl').value">
+            <label class="btn btn-warning btn-file">
+              Change <input type="file" ng2FileSelect [uploader]="uploader"
+                            (change)="uploadAvatar()"/>
+            </label>
+            <button type="button" class="btn btn-danger" (click)="removeAvatar()">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

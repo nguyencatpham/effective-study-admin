@@ -1,0 +1,14 @@
+my-date-picker {
+  .mydp {
+    border-color: #e6e6e6;
+    .selectorarrow {
+      margin-top: 2px !important;
+      &:before, &:after {
+        display: none;
+      }
+    }
+  }
+  .header {
+    position: relative !important;
+  }
+}

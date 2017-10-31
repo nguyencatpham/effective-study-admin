@@ -1,0 +1,14 @@
+.panel{
+  ul.nav-tabs{
+    li.nav-item{
+      &.active{
+        background-color: #fff;
+        a{
+          border-color: #e6e6e6;
+          background-color: #fff;
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

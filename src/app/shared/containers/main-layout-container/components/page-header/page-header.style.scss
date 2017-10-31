@@ -1,0 +1,43 @@
+@import '~styles/var';
+
+page-header {
+  display: block;
+  width: 100%;
+  height: auto;
+  .language-dropdown {
+    min-width: 150px;
+    li {
+      padding-right: 0;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      a {
+        border-radius: 0;
+        img {
+          height: 25px;
+        }
+      }
+      &.dropdown-item.active, &.dropdown-item:active {
+        a {
+          background-color: $color-success;
+          * {
+            color: #fff
+          }
+        }
+      }
+    }
+  }
+  .brand {
+    padding-left: 50px !important;
+    width: 195px !important;
+  }
+  .header-language{
+    .dropdown-item{
+      margin: 0;
+      padding: 0;
+      > a{
+        margin: 0;
+        padding: 10px;
+      }
+    }
+  }
+}

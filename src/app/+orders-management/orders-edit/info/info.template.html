@@ -1,0 +1,73 @@
+
+<form [formGroup]="frm" role="form" novalidate="" (ngSubmit)="onSubmitForm()">
+  <div class="row m-t-15">
+    <div class="col-md-10">
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>User</label>
+        </div>
+        <div class="col-sm-8" [innerHTML]="order?.user?.fullName"></div>
+        <!--<div class="col-sm-8" [ngClass]="{'has-error':!frm.get('name').valid && !frm.get('name').pristine}">-->
+          <!--<input class="form-control" formControlName='name' type="text" placeholder="Name">-->
+          <!--<label class="error" *ngIf="frm.get('name').hasError('required') && !frm.get('name').pristine">-->
+            <!--{{validationMessages['name'].required}}-->
+          <!--</label>-->
+        <!--</div>-->
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Quantity</label>
+        </div>
+        <div class="col-sm-8">
+          {{ order?.quantity }}
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Total</label>
+        </div>
+        <div class="col-sm-8">
+          {{ order?.total }}
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Note</label>
+        </div>
+        <div class="col-sm-8">
+          {{ order?.note }}
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Payment Type</label>
+        </div>
+        <div class="col-sm-8">
+          {{ order?.paymentType == 0 ? "Offline" : "Online" }}
+        </div>
+      </div>
+      <div class="row m-t-5" [ngClass]="{'required': true}">
+        <div class="col-sm-4 control-label text-right">
+          <label>Status</label>
+        </div>
+        <div class="col-sm-8" [ngClass]="{'has-error':!frm.get('status').valid && !frm.get('status').pristine}">
+          <select formControlName='status' class="form-control">
+            <option *ngFor="let s of orderStatus" [ngValue]="s.id">{{s.displayName}}</option>
+          </select>
+          <label class="error" *ngIf="frm.get('status').hasError('required') && !frm.get('status').pristine">
+            {{validationMessages['status'].required}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <hr />
+      <button class="btn btn-default pull-right" type="button" (click)="cancel()">Cancel</button>
+      <button class="btn btn-complete pull-right m-r-5" type="submit" [disabled]="frm.invalid">Save</button>
+      <button class="btn btn-success pull-right m-r-5" type="button" (click)="exportOrder(order.id)">Print</button>
+    </div>
+  </div>
+</form>

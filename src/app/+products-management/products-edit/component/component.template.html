@@ -1,0 +1,44 @@
+<div class="m-t-15">
+  <div class="col-md-6">
+    <div class="row m-t-5">
+      <div class="col-sm-8">
+        <ng-select  [multiple]="true"
+                    [items]="componentSelections"
+                    (data)="changeComponents($event)"
+                    placeholder="Select components"></ng-select>
+      </div>
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-primary" (click)="onSubmitForm()">Add To Product</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr/>
+<div class="table-wrapper" #tableWrapper>
+  <ngx-datatable #table
+                class="material striped ngx-table-hover"
+                [rows]="productComponents"
+                [columnMode]="'force'"
+                [footerHeight]="0"
+                [headerHeight]="'35'"
+                [rowHeight]="'auto'">
+    <ngx-datatable-column
+      [name]="'Component'"
+      [prop]="'componentName'"
+      [width]="200"
+      [draggable]="false"
+      [resizeable]="false">
+    </ngx-datatable-column>
+    <ngx-datatable-column
+      [name]="'Action'"
+      [width]="200"
+      [prop]="'id'"
+      [draggable]="false"
+      [resizeable]="false">
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <button type="button" class="btn btn-danger" (click)="remove(value)">Remove</button>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</div>

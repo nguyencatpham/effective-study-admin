@@ -1,0 +1,41 @@
+rating-info {
+  .rating-container{
+    position: relative;
+    padding: 10px 10px 10px 225px;
+    min-height: 180px;
+    margin-top: 10px;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    .rating-info{
+      position: absolute;
+      left: 10px;
+      width: 200px;
+      .rating-name{
+        color: #000000;
+        font-weight: bold;
+      }
+    }
+
+    .rating-comment{
+      .rating-user{
+        font-size: 18px;
+        font-weight: bold;
+        color: #000;
+      }
+      .rating-date{
+        font-size: 11px;
+        color: #a8a8a8;
+      }
+      .rating-icon{
+        margin-left: -8px;
+        .rating{
+          justify-content: left;
+        }
+      }
+      .rating-content{
+        font-size: 18px;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,181 @@
+.text-white {
+  color: #fff !important;
+}
+
+.flex-important {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.flex-1 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.flex-grow {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 100%;
+  flex: 1 1 100%;
+  box-sizing: border-box;
+}
+
+.flex-initial {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 auto;
+  flex: 0 1 auto;
+  box-sizing: border-box;
+}
+
+.flex-auto {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+}
+
+.flex-none {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+}
+
+.flex-noshrink {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  flex: 1 0 auto;
+  box-sizing: border-box;
+}
+
+.flex-nogrow {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 auto;
+  flex: 0 1 auto;
+  box-sizing: border-box;
+}
+
+.flex-0 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 0%;
+  flex: 1 1 0%;
+  max-width: 0%;
+  max-height: 100%;
+  box-sizing: border-box;
+}
+
+.divider-with-text {
+  position: relative;
+  z-index: 1;
+
+  &:before {
+    border-top: 1px solid #dfdfdf;
+    content: "";
+    margin: 0 auto; /* this centers the line to the full width specified */
+    position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 95%;
+    z-index: -1;
+  }
+
+  span {
+    /* to hide the lines from behind the text, you have to set the background color the same as the container */
+    background: #fff;
+    padding: 0 15px;
+  }
+}
+
+.m-t {
+  margin-top: 15px;
+}
+
+.m-b {
+  margin-bottom: 15px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.font-weight {
+  font-weight: bold;
+}
+
+.font-size-15 {
+  font-size: 15px;
+}
+
+.font-size-0 {
+  font-size: 0;
+}
+
+.font-size-25 {
+  font-size: 25px;
+}
+
+.header .brand {
+  padding-left: 35px;
+}
+
+.overflow-breakword {
+  max-width: 100%;
+  word-break: break-all !important;
+  white-space: normal !important;
+}
+
+.noresults {
+  background: #fff;
+  border-bottom: 1px solid rgba(230, 230, 230, 0.7);
+  border-top: 0px;
+  padding: 10px 20px 10px 20px;
+  font-size: 15px;
+}
+
+.header {
+  .bubble {
+    height: 18px;
+    width: 18px;
+    top: -2px;
+    right: 10px;
+  }
+}
+
+.header {
+  .messgae-count{
+    top: 2px;
+    right: 14px;
+    color: #fff;
+    position: absolute;
+    font-size: 11px;
+  }
+}
+
+.reminder-content {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 300px;
+  white-space: nowrap;
+}
+
+.line-height-20 {
+  line-height: 20px;
+}
+
+.notification-panel {
+  .notification-body {
+    overflow-y: scroll;
+  }
+}
+
+.notification-item {
+  &:hover {
+    cursor: pointer;
+    background-color: #48b0f7 !important;
+  }
+}

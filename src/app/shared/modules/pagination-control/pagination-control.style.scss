@@ -1,0 +1,33 @@
+pagination-control {
+  .paddingTop-0 {
+    padding-top: 0 !important;
+  }
+  .page-size {
+    justify-content: center;
+
+    > label {
+      margin: 0 !important;
+    }
+  }
+  pagination {
+    ul {
+      justify-content: flex-end;
+      margin: 0 !important;
+    }
+  }
+  select {
+    padding: 0.25rem 0.5rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.2rem;
+  }
+
+  .dataTables_wrapper {
+    .dataTables_paginate{
+      margin-top:0 !important;
+    }
+    .dataTables_info{
+      margin-top:0 !important;
+    }
+  }
+}

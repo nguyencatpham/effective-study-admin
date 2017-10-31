@@ -1,0 +1,115 @@
+<div class="register-container full-height sm-p-t-30">
+  <div class="container-sm-height full-height">
+    <div class="row row-sm-height">
+      <div class="col-sm-12 col-sm-height col-middle">
+        <img src="../../assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-ui-jq="unveil"
+             data-src-retina="assets/img/logo_2x.png" width="78" height="22">
+        <h3>Pages makes it easy to enjoy what matters the most in your life</h3>
+        <p>
+          <small>
+            Create a pages account. If you have a facebook account, log into it for this process. Sign in with <a
+            href="" class="text-info">Facebook</a> or <a href="" class="text-info">Google</a>
+          </small>
+        </p>
+        <form id="form-register"
+              [formGroup]="frm"
+              (ngSubmit)="onSubmit(frm.value)"
+              class="p-t-15" role="form" name="register" novalidate>
+          <div class="row">
+            <div class="col-sm-12">
+              <div nois-input-container class="form-group form-group-default"
+                   [ngClass]="{'has-error': frm.controls['displayName'].invalid && !frm.controls['displayName'].pristine}">
+                <label>Display Name</label>
+                <input type="text" name="displayName" id="displayName" placeholder="Display Name" class="form-control"
+                       required
+                       nois-input
+                       [formControl]="frm.controls['displayName']">
+              </div>
+              <label class="error"
+                     for="displayName"
+                     *ngIf="frm.controls['displayName'].hasError('required') && !frm.controls['displayName'].pristine">This
+                field
+                is required.</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div nois-input-container
+                   class="form-group form-group-default"
+                   [ngClass]="{ 'has-error': frm.controls['email'].invalid && !frm.controls['email'].pristine }">
+                <label>Email</label>
+                <input type="text" name="email" placeholder="Your Email"
+                       class="form-control"
+                       id="email"
+                       [formControl]="frm.controls['email']"
+                       nois-input
+                       required>
+              </div>
+              <label class="error" for="email"
+                     *ngIf="frm.controls['email'].hasError('required') && !frm.controls['email'].pristine">This field
+                is required.</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div nois-input-container class="form-group form-group-default"
+                   [ngClass]="{ 'has-error': frm.controls['password'].invalid && !frm.controls['password'].pristine }">
+                <label>Password</label>
+                <input type="password" name="pass" id="pass" placeholder="Minimum of 4 Characters" class="form-control"
+                       [formControl]="frm.controls['password']"
+                       nois-input
+                       required>
+              </div>
+              <label class="error" for="pass"
+                     *ngIf="frm.controls['password'].hasError('required') && !frm.controls['password'].pristine">This
+                field is
+                required.</label>
+              <label class="error" for="pass"
+                     *ngIf="frm.controls['password'].hasError('minlength') && !frm.controls['password'].pristine">Password
+                should have at least 4
+                characters</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div nois-input-container class="form-group form-group-default"
+                   [ngClass]="{ 'has-error': frm.controls['confirm'].invalid && !frm.controls['confirm'].pristine }">
+                <label>Confirm Password</label>
+                <input type="password" name="confirm" id="confirm" placeholder="Enter your password again"
+                       class="form-control"
+                       [formControl]="frm.controls['confirm']"
+                       nois-input
+                       required>
+              </div>
+              <label class="error" for="confirm"
+                     *ngIf="frm.controls['confirm'].hasError('required') && !frm.controls['confirm'].pristine">This
+                field is required.</label>
+              <label class="error" for="confirm"
+                     *ngIf="frm.controls['confirm'].hasError('nomatch') && !frm.controls['confirm'].pristine">Password
+                not match</label>
+            </div>
+          </div>
+          <div class="row m-t-10">
+            <div class="col-md-12">
+              <p>I agree to the <a href="" class="text-info small">Pages Terms</a> and <a href=""
+                                                                                          class="text-info small">Privacy</a>.
+              </p>
+            </div>
+          </div>
+          <div class="m-t-10 flex flex-row justify-between">
+            <button class="btn btn-primary btn-cons" type="submit" [disabled]="frm.invalid || submitted">Create a
+              new
+              account
+            </button>
+            <span class="m-t-10 text-right">
+              Already have an account? <a routerLink="/auth/sign-in">Sign In</a>
+            </span>
+          </div>
+          <div class="alert alert-danger m-t-10" *ngIf="hasError">
+            <strong>Error: </strong>{{errorMessage}}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

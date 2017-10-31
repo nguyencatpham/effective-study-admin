@@ -1,0 +1,9 @@
+<div class="quick-view" [class.parrallax]="parrallax">
+  <ng-content></ng-content>
+  <div class="view view-left">
+    <ng-template [ngTemplateOutlet]="leftContentTpl?.templateRef"></ng-template>
+  </div>
+  <div class="view view-right">
+    <ng-template [ngTemplateOutlet]="rightContentTpl?.templateRef"></ng-template>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="row m-t-15">
+  <div class="col-md-6">
+
+    <table class="table">
+      <thead class="thead-default">
+      <tr>
+        <th colspan="2">
+          <h5 class="text-center">
+            <strong>Shipping Address</strong>
+          </h5>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Full Name</th>
+        <td [innerHTML]="shippingAddress?.fullName"></td>
+      </tr>
+      <tr>
+        <th scope="row">Address</th>
+        <td [innerHTML]="shippingAddress?.street + ', ' + shippingAddress?.ward + ', ' + shippingAddress?.district + ', ' + shippingAddress?.province"></td>
+      </tr>
+      <tr>
+        <th scope="row">Phone</th>
+        <td [innerHTML]="shippingAddress?.phoneNumber"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-6">
+    <table class="table">
+      <thead class="thead-default">
+      <tr>
+        <th colspan="2">
+          <h5 class="text-center">
+            <strong>Billing Address</strong>
+          </h5>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Full Name</th>
+        <td [innerHTML]="billingAddress?.fullName"></td>
+      </tr>
+      <tr>
+        <th scope="row">Address</th>
+        <td [innerHTML]="billingAddress?.street + ', ' + billingAddress?.ward + ', ' + billingAddress?.district + ', ' + billingAddress?.province"></td>
+      </tr>
+      <tr>
+        <th scope="row">Phone</th>
+        <td [innerHTML]="billingAddress?.phoneNumber"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

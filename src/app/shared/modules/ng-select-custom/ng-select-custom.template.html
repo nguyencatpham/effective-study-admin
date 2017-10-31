@@ -1,0 +1,9 @@
+<ng-select #ngSelect
+           [allowClear]="allowClear"
+           [items]="data"
+           [multiple]="multiple"
+           [active]="activeItem"
+           [placeholder]="placeholder"
+           [disabled]="disabled"
+           (selected)="onSelected($event)"
+           (removed)="onRemoved($event)"></ng-select>

@@ -1,0 +1,89 @@
+<div off-click (clickedOutSide)="clickedOutside($event)">
+  <div class="relative">
+    <div class="searchform input-group">
+      <input #searchInput type="search" class="form-control p-l-15"
+             [(ngModel)]='inputValue'
+             [placeholder]='placeholder'>
+      <span class="input-group-btn">
+        <button class="searchform_button p-l-15 p-r-15 btn btn-primary"
+                type="button"
+                (click)="submit(inputValue)">
+          <span class="glyphicon glyphicon-search fa-flip-horizontal" aria-hidden="true"></span>
+        </button>
+      </span>
+    </div>
+  </div>
+  <div class="search relative" *ngIf="showSuggestion && isOpen
+                                    && (suggestResultEncode['artist']?.length
+                                    || suggestResultEncode['category']?.length
+                                    || suggestResultEncode['tag']?.length
+                                    || suggestResultEncode['fileName']?.length)">
+    <ul class="results">
+      <li class="suggestitem p-l-0 block">
+        <div class="suggestitem_categorydetail row p-l-20 p-t-10">
+          <div class="col-sm-12 p-l-0"
+               *ngIf="suggestResultEncode['artist']?.length">
+            <span class="font-weight-bold">ARTISTS:</span>
+            <a href="javascript: void(0)"
+               (click)="onClickSuggestValue(getKeyword('artists', inputValue))">{{inputValue}}</a>
+          </div>
+          <div class="col-sm-12 p-l-0"
+               *ngIf="suggestResultEncode['category']?.length">
+            <span class="font-weight-bold">CATEGORIES:</span>
+            <a href="javascript: void(0)"
+               (click)="onClickSuggestValue(getKeyword('categories', inputValue))">{{inputValue}}</a>
+          </div>
+          <div class="col-sm-12 p-l-0"
+               *ngIf="suggestResultEncode['tag']?.length">
+            <span class="font-weight-bold">TAGS:</span>
+            <a href="javascript: void(0)"
+               (click)="onClickSuggestValue(getKeyword('tags', inputValue))">{{inputValue}}</a>
+          </div>
+          <div class="col-sm-12 p-l-0"
+               *ngIf="suggestResultEncode['fileName']?.length">
+            <span class="font-weight-bold">FILENAMES:</span>
+            <a href="javascript: void(0)"
+               (click)="onClickSuggestValue(getKeyword('fileNames', inputValue))">{{inputValue}}</a>
+          </div>
+        </div>
+
+        <div class="suggestitem_categorydetail row p-l-20 p-t-10" *ngIf="suggestResultEncode['artist']?.length">
+          <div class="col-sm-12 p-l-0"
+               *ngFor="let artist of suggestResultEncode['artist']; let i = index">
+            <span class="font-weight-bold">Artist:</span>
+            <a href="javascript: void(0)"
+               (click)="onClickSuggestValue(getKeyword('artist', suggestResult['artist'][i]))"
+               [innerHtml]="artist"></a>
+          </div>
+        </div>
+        <div class="suggestitem_categorydetail row p-l-20 p-t-10" *ngIf="suggestResultEncode['category']?.length">
+          <div class="col-sm-12 p-l-0"
+               *ngFor="let category of suggestResultEncode['category']; let i = index">
+            <span class="font-weight-bold">Category:</span>
+            <a href="javascript: void(0)"
+               (click)="onClickSuggestValue(getKeyword('category', suggestResult['category'][i]))"
+               [innerHtml]="category"></a>
+          </div>
+        </div>
+        <div class="suggestitem_categorydetail row p-l-20 p-t-10" *ngIf="suggestResultEncode['tag']?.length">
+          <div class="col-sm-12 p-l-0"
+               *ngFor="let tag of suggestResultEncode['tag']; let i = index">
+            <span class="font-weight-bold">Tag:</span>
+            <a href="javascript: void(0)"
+               (click)="onClickSuggestValue(getKeyword('tag', suggestResult['tag'][i]))"
+               [innerHtml]="tag"></a>
+          </div>
+        </div>
+        <div class="suggestitem_categorydetail row p-l-20 p-t-10" *ngIf="suggestResultEncode['fileName']?.length">
+          <div class="col-sm-12 p-l-0"
+               *ngFor="let filename of suggestResultEncode['fileName']; let i = index">
+            <span class="font-weight-bold">FileName:</span>
+            <a href="javascript: void(0)"
+               (click)="onClickSuggestValue(getKeyword('fileName', suggestResult['fileName'][i]))"
+               [innerHtml]="filename"></a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

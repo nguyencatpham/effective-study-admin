@@ -1,0 +1,39 @@
+.ngx-datatable {
+  input[type=text] {
+    display: block;
+    background: transparent;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #5264AE;
+  }
+
+  .ngx-table-thum{
+    width: 60px;
+  }
+}
+
+.ngx-table-hover {
+  .datatable-body-cell {
+    cursor: pointer;
+  }
+}
+
+.datatable-header {
+  .datatable-header-cell {
+    font-weight: bold !important;
+  }
+}
+
+.dataTables_wrapper label select {
+  height: 25px !important;
+  padding: 0 12px !important;
+  min-height: 25px !important;
+}
+
+.page-size {
+  margin-top: 5px;
+}
+
+.paddingTop-0 {
+  padding-bottom: 5px !important;
+}

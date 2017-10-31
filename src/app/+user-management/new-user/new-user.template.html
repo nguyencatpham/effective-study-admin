@@ -1,0 +1,17 @@
+<create-or-update-user (onValueChange)="submitData($event)" [isShowRoles]="false"></create-or-update-user>
+<div class="row m-t-20">
+  <div class="col-lg-8">
+    <div class="row justify-center">
+      <div class="col-lg-3 col-sm-1 col-1"></div>
+      <div class="col-lg-7 col-sm-12 col-12">
+        <button class="btn btn-complete btn-cons" (click)="onSubmit()"
+                [disabled]="!userData" >
+          Save
+        </button>
+        <button class="btn btn-default btn-cons" type="button" (click)="cancel()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,134 @@
+<div class="row">
+  <div class="col-sm-12 col-md-7 col-lg-6 m-b-10">
+    <!-- <div class="input-icon">
+      <input-debounce placeholder="Start typing to search users by name, email, role"
+                      title="Start typing to search users by name, email, role"
+                      (value)="onSearchChanged($event)" [inputValue]="searchText"></input-debounce>
+    </div> -->
+  </div>
+  <div class="col-sm-12 col-md-5 col-lg-6 m-b-10">
+    <div class="pull-right">
+      <button class="btn btn-success btn-cons" (click)="addNewUser()">New User</button>
+      <!-- <button class="btn btn-danger btn-cons" (click)="deleteSelectedRow()"
+              [disabled]="!userData.selected.isCheckedAll && (!userData.selected.itemsRemoved || !userData.selected.itemsChecked.length)">
+        Delete Selected
+      </button> -->
+    </div>
+  </div>
+</div>
+
+<ng-container *ngTemplateOutlet="pagination"></ng-container>
+<div class="table-wrapper" #tableWrapper>
+<ngx-datatable #table
+               class="material ngx-table-hover"
+               [rows]="userData.data"
+               [columnMode]="'flex'"
+               [footerHeight]="0"
+               [headerHeight]="40"
+               [rowHeight]="'auto'"
+               [externalSorting]="true"
+               [loadingIndicator]="tableConfig.loading"
+               (activate)="onActivate($event)"
+               [sorts]="[{prop: 'fullName', dir: 'asc'}]"
+               (sort)="onSort($event)">
+  <ngx-datatable-column
+    [flexGrow]="35"
+    [minWidth]="45"
+    [sortable]="false"
+    [canAutoResize]="true"
+    [draggable]="false"
+    [resizeable]="false">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      <div class="checkbox check-all">
+        <input type="checkbox" [id]="'select-all'"
+               [(ngModel)]="userData.selected.isCheckedAll"
+               (ngModelChange)="onCheckAll($event)">
+        <label [for]="'select-all'"></label>
+      </div>
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <div class="checkbox">
+        <input type="checkbox" [id]="'checkbox-' + row.id" #rowCheckbox
+               (change)="onRowSelected($event, row)">
+        <label [for]="'checkbox-' + row.id"></label>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'User Name'"
+    [cellClass]="'wrap-row'"
+    [prop]="'userName'"
+    [resizeable]="false"
+    [flexGrow]="200"
+    [draggable]="false">
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'EMAIL'"
+    [prop]="'email'"
+    [cellClass]="'wrap-row'"
+    [flexGrow]="200"
+    [draggable]="false"
+    [resizeable]="false">
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'First Name'"
+    [prop]="'firstName'"
+    [cellClass]="'wrap-row'"
+    [flexGrow]="200"
+    [draggable]="false"
+    [resizeable]="false">
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'Last Name'"
+    [prop]="'lastName'"
+    [cellClass]="'wrap-row'"
+    [flexGrow]="200"
+    [draggable]="false"
+    [resizeable]="false">
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'Phone Number'"
+    [prop]="'phoneNumber'"
+    [cellClass]="'wrap-row'"
+    [flexGrow]="200"
+    [draggable]="false"
+    [resizeable]="false">
+  </ngx-datatable-column>
+  <!--<ngx-datatable-column
+    [name]="'ROLE'"
+    [flexGrow]="500"
+    [draggable]="false"
+    [resizeable]="false">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <button *ngFor="let role of value" class="btn btn-success m-b-5 m-r-5 btn-xs" disabled>
+        {{role}}
+      </button>
+    </ng-template>
+  </ngx-datatable-column>-->
+  <ngx-datatable-column
+    [name]="'ACTIVE'"
+    [prop]="'isActive'"
+    [minWidth]="50"
+    [flexGrow]="50"
+    [sortable]="false"
+    [canAutoResize]="false"
+    [resizeable]="false"
+    [draggable]="false">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <div class="checkbox">
+        <input type="checkbox" [checked]="value" disabled>
+        <label></label>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>
+</div>
+<ng-container *ngTemplateOutlet="pagination"></ng-container>
+
+<ng-template #pagination>
+  <pagination-control [totalRecord]="userData.totalRecord"
+                      [pageSize]="tableConfig.pageSize"
+                      [currentPage]="tableConfig.currentPage"
+                      (onSelectedPageSize)="onSelectedPageSize($event)"
+                      (onPageChange)="onPageChange($event)"></pagination-control>
+</ng-template>

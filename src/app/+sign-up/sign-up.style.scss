@@ -1,0 +1,12 @@
+.register-container{
+  width: 550px;
+  margin: auto;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .register-container{
+    width: 100%;
+    padding: 15px;
+  }
+}

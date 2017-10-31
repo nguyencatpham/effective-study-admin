@@ -1,0 +1,41 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+// Count from src/styles folder
+$fa-font-path: "../../node_modules/font-awesome/fonts" !default;
+@import '~font-awesome/scss/font-awesome.scss';
+
+$glyphicons-halflings-font-path:  '../../node_modules/glyphicons-halflings/fonts';
+$glyphicons-halflings-class-prefix: 'glyphicon';
+@import '~glyphicons-halflings/scss/glyphicons-halflings';
+
+@import '~nprogress/nprogress.css';
+
+@import '~basscss/css/basscss.css';
+
+@import '~ngx-perfect-scrollbar/dist/lib/perfect-scrollbar.component.css';
+
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+
+@import '~ngx-toastr/toastr';
+
+@import '~nvd3/build/nv.d3.css';
+
+@import '~rickshaw/rickshaw.css';
+
+@import '~ngx-toastr/toastr';
+
+@import './bootstrap3';
+
+@import './custom/checkbox';
+@import './custom/loadingBar';
+@import './custom/myDatePicker';
+@import './custom/form';
+@import './custom/breadcrumb';
+@import './custom/table';
+@import './custom/sidebar';
+@import 'custom/tab';
+@import 'custom/upload';
+
+@import './pages';

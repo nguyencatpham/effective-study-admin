@@ -1,0 +1,33 @@
+<form [formGroup]="frm" role="form" novalidate="" (ngSubmit)="onSubmitForm()">
+  <div class="row m-t-15">
+    <div class="col-md-10">
+      <div class="row m-t-5" [ngClass]="{'required': true}">
+        <div class="col-sm-4 control-label text-right">
+          <label>Key</label>
+        </div>
+        <div class="col-sm-8" [ngClass]="{'has-error':!frm.get('key').valid && !frm.get('key').pristine}">
+          <input class="form-control" formControlName='key' type="text" placeholder="Key">
+          <label class="error" *ngIf="frm.get('key').hasError('required') && !frm.get('key').pristine">
+            {{validationMessages['key'].required}}
+          </label>
+        </div>
+      </div>
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>value</label>
+        </div>
+        <div class="col-sm-8">
+          <input class="form-control" formControlName='value' type="text" placeholder="Value">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <hr />
+      <button type="button" class="btn btn-default pull-right" (click)="cancel()">Cancel</button>
+      <button class="btn btn-danger pull-right m-r-5" *ngIf="setting?.id" type="button" (click)="delete()">Delete</button>
+      <button class="btn btn-complete pull-right m-r-5" type="submit" [disabled]="frm.invalid">Save</button>
+    </div>
+  </div>
+</form>

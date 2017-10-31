@@ -1,0 +1,35 @@
+@import '~styles/_var.scss'; // see webpack.dev.js > sassLoader
+
+dashboard {
+  display: block;
+  height: 100%;
+  ngb-carousel {
+    height: 100%;
+    .carousel-indicators, .carousel-control-prev, .carousel-control-next {
+      display: none;
+    }
+    .carousel-inner {
+      height: 100%;
+      display: flex;
+    }
+  }
+
+  .widget-7 {
+    ngb-carousel {
+      .carousel-inner {
+        .carousel-item {
+          p {
+            display: block;
+            font-size: 1em;
+            line-height: 1.2em;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+rickshaw{
+  height: 100%;
+}

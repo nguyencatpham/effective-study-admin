@@ -1,0 +1,67 @@
+<ngx-datatable #datatableConfig
+               class="material ngx-table-hover"
+               [rows]="orderItems"
+               [columnMode]="'force'"
+               [footerHeight]="0"
+               [headerHeight]="'35'"
+               [rowHeight]="'auto'"
+               [externalSorting]="true"
+               [loadingIndicator]="tableConfig.loading"
+               [sorts]="[{prop: 'type', dir: 'asc'}]">
+  <!-- Row Detail Template -->
+  <ngx-datatable-row-detail [rowHeight]="'auto'">
+    <ng-template let-row="row" ngx-datatable-row-detail-template>
+      <table class="table table-item" *ngIf="row.items.length">
+        <tr>
+          <th style="width: 300px">Name</th>
+          <th style="width: 100px">Quantity</th>
+          <th>Total</th>
+        </tr>
+        <tr *ngFor="let item of row.items"
+            class="cursor">
+          <td>{{item.productName}}</td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.quantity * item.price | number}}</td>
+        </tr>
+      </table>
+    </ng-template>
+  </ngx-datatable-row-detail>
+  <ngx-datatable-column
+    [name]="'Applied Date'"
+    [prop]="'appliedAt'"
+    [width]="100"
+    [sortable]="false"
+    [canAutoResize]="false"
+    [draggable]="false"
+    [resizeable]="false">
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'Total'"
+    [prop]="'total'"
+    [width]="300"
+    [sortable]="false"
+    [draggable]="false"
+    [resizeable]="false">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <div>
+        {{ value | number}}
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'Quantity'"
+    [prop]="'quantity'"
+    [width]="300"
+    [sortable]="false"
+    [draggable]="false"
+    [resizeable]="false">
+  </ngx-datatable-column>
+  <ngx-datatable-column
+    [name]="'Fee Shipping'"
+    [prop]="'feeShipping'"
+    [width]="'auto'"
+    [sortable]="false"
+    [draggable]="false"
+    [resizeable]="false">
+  </ngx-datatable-column>
+</ngx-datatable>

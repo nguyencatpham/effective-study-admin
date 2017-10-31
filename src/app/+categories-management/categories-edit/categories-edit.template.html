@@ -1,0 +1,111 @@
+<form [formGroup]="frm" role="form" novalidate="" (ngSubmit)="onSubmitForm()">
+  <div class="row m-t-10">
+    <div class="col-md-10">
+      <!--Name-->
+      <div class="row m-t-5" [ngClass]="{'required': true}">
+        <div class="col-sm-4 control-label text-right">
+          <label>Name</label>
+        </div>
+        <div class="col-sm-8" [ngClass]="{'has-error':!frm.get('name').valid && !frm.get('name').pristine}">
+          <input formControlName='name' type="text" placeholder="Name" class="form-control">
+          <label class="error" *ngIf="frm.get('name').hasError('required') && !frm.get('name').pristine">
+            {{validationMessages['name'].required}}
+          </label>
+        </div>
+      </div>
+      <!--Description-->
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Description</label>
+        </div>
+        <div class="col-sm-8">
+          <!--<textarea rows="4" formControlName='description' type="text" placeholder="Description"></textarea>-->
+          <app-tinymce formControlName='description'></app-tinymce>
+        </div>
+      </div>
+      <!--Image-->
+      <!--<div class="row m-t-5">-->
+        <!--<div class="col-sm-4 control-label text-right">-->
+          <!--<label>Image</label>-->
+        <!--</div>-->
+        <!--<div class="col-sm-8">-->
+          <!--<input formControlName='imageId' type="text" placeholder="Image" class="form-control">-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="row m-t-5">-->
+        <!--<div class="col-sm-4 control-label text-right">-->
+          <!--<label>Image</label>-->
+        <!--</div>-->
+        <!--<div class="col-sm-8">-->
+          <!--<div class="image-container">-->
+            <!--<img class="thumb" *ngIf="categoryInfo?.imageUrl" [src]="categoryInfo?.imageUrl" /><br/>-->
+            <!--<div class="label-icon-upload-cover"></div>-->
+            <!--<div class="label-icon-upload">-->
+              <!--<label for="categoryUpload">-->
+                <!--<i class="fa fa-camera" aria-hidden="true"></i>-->
+                <!--<input id="categoryUpload" type="file" ng2FileSelect [uploader]="uploader"-->
+                       <!--(change)="uploadImage()" hidden="hidden"/>-->
+              <!--</label>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--&lt;!&ndash;Parent Menu&ndash;&gt;-->
+      <!--<div class="row m-t-5">-->
+        <!--<div class="col-sm-4 control-label text-right">-->
+          <!--<label>Parent Menu</label>-->
+        <!--</div>-->
+        <!--<div class="col-sm-8">-->
+          <!--<input formControlName='parentId' type="text" placeholder="Parent" class="form-control">-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;isShowHomePage&ndash;&gt;-->
+      <!--<div class="row m-t-5">-->
+        <!--<div class="col-sm-4 control-label text-right">-->
+          <!--<label>Show In HomePage</label>-->
+        <!--</div>-->
+        <!--<div class="col-sm-8">-->
+          <!--<input formControlName='isShowHomePage' type="checkbox">-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;isShowOnMenu&ndash;&gt;-->
+      <!--<div class="row m-t-5">-->
+        <!--<div class="col-sm-4 control-label text-right">-->
+          <!--<label>Show On Menu</label>-->
+        <!--</div>-->
+        <!--<div class="col-sm-8">-->
+          <!--<input formControlName='isShowOnMenu' type="checkbox">-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;isPublished&ndash;&gt;-->
+      <!--<div class="row m-t-5">-->
+        <!--<div class="col-sm-4 control-label text-right">-->
+          <!--<label>Publish</label>-->
+        <!--</div>-->
+        <!--<div class="col-sm-8">-->
+          <!--<input formControlName='isPublished' type="checkbox">-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--displayOrder-->
+      <div class="row m-t-5">
+        <div class="col-sm-4 control-label text-right">
+          <label>Display Order</label>
+        </div>
+        <div class="col-sm-8">
+          <input formControlName='displayOrder' type="number" placeholder="Display Order" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <hr />
+      <button class="btn btn-default pull-right" type="button" (click)="cancel()">Cancel</button>
+      <button class="btn btn-danger pull-right m-r-5" type="button"
+              *ngIf="categoryInfo?.id" (click)="delete()">Delete</button>
+      <button class="btn btn-complete pull-right m-r-5" type="submit" [disabled]="frm.invalid">Save</button>
+    </div>
+  </div>
+</form>

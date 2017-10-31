@@ -1,0 +1,15 @@
+main-layout-container {
+  display: block;
+  height: 100%;
+
+  .page-container {
+    .page-content-wrapper {
+      .content {
+        overflow: hidden;
+      }
+    }
+  }
+  ng-sidebar-container {
+    height: 100%;
+  }
+}

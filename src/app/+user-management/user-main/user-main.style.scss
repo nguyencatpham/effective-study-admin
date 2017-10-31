@@ -1,0 +1,19 @@
+user-main {
+  .checkbox {
+    box-sizing: border-box;
+    margin-bottom: 0;
+    margin-top: 0;
+    position: relative;
+  }
+  .highlight-row {
+    background-color: #daeffd !important;
+  }
+  .wrap-row {
+    word-break: break-all;
+  }
+  .datatable-header {
+    .datatable-row-center {
+      bottom: 15px;
+    }
+  }
+}

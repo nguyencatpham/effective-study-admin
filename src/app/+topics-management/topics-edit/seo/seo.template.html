@@ -1,0 +1,58 @@
+<form [formGroup]="frm" role="form" novalidate="" (ngSubmit)="onSubmitForm()">
+  <div class="row m-t-15">
+    <div class="col-md-10">
+      <div class="row m-t-5" [ngClass]="{'required': true}">
+        <div class="col-sm-4 control-label text-right">
+          <label>Name</label>
+        </div>
+        <div class="col-sm-8" [ngClass]="{'has-error':!frm.get('name').valid && !frm.get('name').pristine}">
+          <input class="form-control" formControlName='name' type="text" placeholder="Name">
+          <label class="error" *ngIf="frm.get('name').hasError('required') && !frm.get('name').pristine">
+            {{validationMessages['name'].required}}
+          </label>
+        </div>
+      </div>
+      <div class="row m-t-5" [ngClass]="{'required': true}">
+        <div class="col-sm-4 control-label text-right">
+          <label>Meta Keyword</label>
+        </div>
+        <div class="col-sm-8" [ngClass]="{'has-error':!frm.get('metaKeyword').valid && !frm.get('metaKeyword').pristine}">
+          <input class="form-control" formControlName='metaKeyword' type="text" placeholder="Meta Keyword">
+          <label class="error" *ngIf="frm.get('metaKeyword').hasError('required') && !frm.get('metaKeyword').pristine">
+            {{validationMessages['metaKeyword'].required}}
+          </label>
+        </div>
+      </div>
+      <div class="row m-t-5" [ngClass]="{'required': true}">
+        <div class="col-sm-4 control-label text-right">
+          <label>Meta Description</label>
+        </div>
+        <div class="col-sm-8" [ngClass]="{'has-error':!frm.get('metaDescription').valid && !frm.get('metaDescription').pristine}">
+          <input class="form-control" formControlName='metaDescription' type="text" placeholder="Meta Description">
+          <label class="error" *ngIf="frm.get('metaDescription').hasError('required') && !frm.get('metaDescription').pristine">
+            {{validationMessages['metaDescription'].required}}
+          </label>
+        </div>
+      </div>
+      <div class="row m-t-5" [ngClass]="{'required': true}">
+        <div class="col-sm-4 control-label text-right">
+          <label>Meta Title</label>
+        </div>
+        <div class="col-sm-8" [ngClass]="{'has-error':!frm.get('metaTitle').valid && !frm.get('metaTitle').pristine}">
+          <input class="form-control" formControlName='metaTitle' type="text" placeholder="Meta Title">
+          <label class="error" *ngIf="frm.get('metaTitle').hasError('required') && !frm.get('metaTitle').pristine">
+            {{validationMessages['metaTitle'].required}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <hr />
+      <button type="button" class="btn btn-default pull-right" (click)="cancel()">Cancel</button>
+      <button class="btn btn-danger pull-right m-r-5" type="button" *ngIf="seo?.id" (click)="delete()">Delete</button>
+      <button class="btn btn-complete pull-right m-r-5" type="submit" [disabled]="frm.invalid">Save</button>
+    </div>
+  </div>
+</form>

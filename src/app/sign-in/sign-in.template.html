@@ -1,0 +1,63 @@
+<div class="login-wrapper">
+  <div class="login-container">
+    <div class="m-l-10 m-r-10">
+      <div class="inline font-size-0 logo-container text-center">
+        <img class="inline-block" src="../../assets/icon/logo.png" alt="logo" width="100" height="auto">
+        <!--<div class="font-weight font-size-25 inline-block align-middle line-height-2 m-l-10">Reewod</div>-->
+      </div>
+      <form id="form-login"
+            [formGroup]="frm"
+            (ngSubmit)="onSubmit(frm.value)"
+            name="login" class="p-t-15" role="form"
+            novalidate="">
+
+        <div nois-input-container
+             class="form-group form-group-default"
+             [ngClass]="{'has-error':!frm.get('email').valid && !frm.get('email').pristine}">
+          <label>User Name</label>
+          <div class="controls">
+            <input [formControl]="frm.get('email')"
+                   id="email"
+                   type="email"
+                   name="email"
+                   placeholder="User Name"
+                   class="form-control">
+          </div>
+        </div>
+        <label class="error" for="email"
+               *ngIf="frm.get('email').hasError('required') && !frm.get('email').pristine">This field is
+          required.</label>
+
+        <div nois-input-container class="form-group form-group-default"
+             [ngClass]="{'has-error':!frm.get('password').valid && !frm.get('password').pristine}">
+          <label>Password</label>
+          <div class="controls">
+            <input nois-input
+                   id="password"
+                   [formControl]="frm.get('password')"
+                   type="password"
+                   name="password"
+                   placeholder="Password"
+                   class="form-control">
+          </div>
+        </div>
+        <label class="error" for="password"
+               *ngIf="frm.get('password').hasError('required') && !  frm.get('password').pristine">This field
+          is
+          required.</label>
+
+        <div class="row no-margin">
+          <div class="col-sm-6 no-padding">
+            <button class="btn btn-primary btn-cons" type="submit" id="btnLogin" name="btnLogin"
+                    [disabled]="!frm.valid || submitted">
+              Sign in
+            </button>
+          </div>
+          <div class="col-sm-6 text-right m-t-10 m-b-10 block">
+            <a routerLink="/auth/forgot-password" class="text-info">Forgot your password?</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

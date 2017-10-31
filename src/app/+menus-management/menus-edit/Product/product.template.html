@@ -1,0 +1,79 @@
+<div>
+  <div class="col-md-6">
+    <div class="row m-t-5">
+      <div class="col-sm-4 control-label text-right">
+        <label>Category</label>
+      </div>
+      <div class="col-sm-8">
+        <select class="form-control" [(ngModel)]="filter.category" (change)="filterChanged()">
+          <option value="0">All</option>
+          <option *ngFor="let c of categories" [ngValue]="c.id">{{c.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row m-t-5">
+      <div class="col-sm-4 control-label text-right">
+        <label>Name</label>
+      </div>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" placeholder="Product name"
+              [(ngModel)]="filter.productname" (keyup)="filterChanged()">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="table-wrapper" #tableWrapper>
+  <ngx-datatable #table
+              class="material striped ngx-table-hover"
+              [rows]="filteredProducts"
+              [columnMode]="'force'"
+              [footerHeight]="0"
+              [headerHeight]="'35'"
+              [rowHeight]="'auto'">
+    <ngx-datatable-column
+      [name]="'IMAGE'"
+      [prop]="'imageUrl'"
+      [width]="300"
+      [draggable]="false"
+      [resizeable]="false">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <img class="ngx-table-thum" [src]="value" />
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column
+      [name]="'NAME'"
+      [prop]="'name'"
+      [width]="300"
+      [draggable]="false"
+      [resizeable]="false">
+    </ngx-datatable-column>
+    <ngx-datatable-column
+      [name]="'Quantity'"
+      [width]="300"
+      [draggable]="false"
+      [resizeable]="false">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <input type="number" class="form-control" [(ngModel)]="row.quantity" />
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column
+      [name]="'Price'"
+      [prop]="'price'"
+      [width]="300"
+      [draggable]="false"
+      [resizeable]="false">
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <span>{{ value | number}}</span>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column
+      [name]="'Action'"
+      [width]="200"
+      [draggable]="false"
+      [resizeable]="false">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <input class="btn btn-primary" [disabled]="!row.quantity" type="button" (click)="add(row)" value="Add To Menu">
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</div>

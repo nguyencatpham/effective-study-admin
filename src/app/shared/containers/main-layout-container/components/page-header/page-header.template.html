@@ -1,0 +1,134 @@
+<div class="header">
+  <!-- START MOBILE CONTROLS -->
+  <div class="container-fluid relative">
+    <!-- LEFT SIDE -->
+    <div class="pull-left full-height visible-sm visible-xs">
+      <!-- START ACTION BAR -->
+      <div class="header-inner">
+        <a href="javascript:void(0)"
+           class="btn-link toggle-sidebar visible-sm-inline-block visible-xs-inline-block padding-5"
+           (click)="openLeftSideNav()">
+          <span class="icon-set menu-hambuger"></span>
+        </a>
+      </div>
+      <!-- END ACTION BAR -->
+    </div>
+    <div class="pull-center hidden-md hidden-lg">
+      <div class="header-inner">
+        <div class="brand inline cursor" (click)="goToHome()">
+          <img src="../../../../../../assets/icon/logo.png" alt="logo"
+               data-src="assets/icon/logo.png"
+               data-src-retina="assets/icon/logo.png" width="auto" height="30">
+          <!--<div class="font-weight">Reewod App</div>-->
+        </div>
+      </div>
+    </div>
+    <!-- RIGHT SIDE -->
+    <div class="pull-right full-height visible-sm visible-xs">
+      <!-- START ACTION BAR -->
+      <div class="header-inner">
+        <a href="javascript:void(0)" class="btn-link visible-xs-inline-block visible-sm-inline-block m-r-10"
+           ngbDropdown>
+          <span class="pg pg-arrow_minimize" ngbDropdownToggle></span>
+          <ul class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
+            <li class="dropdown-item">
+              <a href="javascript:void(0)" (click)="viewProfile()" class="d-flex flex-row text-black bold">
+                <span><i class="pg-settings_small bold"></i></span>
+                <span class="bold m-l-10">Profile</span>
+              </a>
+            </li>
+            <li class="dropdown-item bg-master-lighter">
+              <a href="javascript:void(0)" (click)="logout()" class="d-flex flex-row text-black">
+                <span><i class="pg-power bold"></i></span>
+                <span class="bold m-l-10">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </a>
+        <!--<a href="javascript:void(0)" class="btn-link visible-xs-inline-block visible-sm-inline-block m-r-10">-->
+        <!--<span class="pg pg-arrow_minimize"></span>-->
+        <!--</a>-->
+        <!--<a href="javascript:void(0)" class="btn-link visible-sm-inline-block visible-xs-inline-block" (click)="openRightSideBar()">-->
+        <!--<span class="icon-set menu-hambuger-plus"></span>-->
+        <!--</a>-->
+      </div>
+      <!-- END ACTION BAR -->
+    </div>
+  </div>
+  <!-- END MOBILE CONTROLS -->
+  <div class=" pull-left sm-table hidden-xs hidden-sm">
+    <div class="header-inner">
+      <div class="brand inline cursor" (click)="goToHome()">
+        <img src="../../../../../../assets/icon/logo.png" alt="logo"
+             data-src="assets/icon/logo.png" data-ui-jq="unveil"
+             data-src-retina="assets/icon/logo.png" width="auto" height="50">
+        <!--<span class="font-size-15 font-weight">Reewod App</span>-->
+      </div>
+
+      <!--<a class="search-link" ng-click="showSearchOverlay()">-->
+        <!--<i class="pg-search"></i>-->
+        <!--Type anywhere to-->
+        <!--<span class="bold">search</span>-->
+      <!--</a>-->
+    </div>
+  </div>
+
+  <div class=" pull-right">
+    <!-- START User Info-->
+    <div class="visible-lg visible-md m-t-10">
+      <div class="dropdown pull-left header-language" ngbDropdown>
+        <button class="profile-dropdown-toggle" type="button" ngbDropdownToggle aria-haspopup="true"
+                aria-expanded="false">
+                    <span class="inline m-t-10">
+                <img [src]="languages[userInfo.languageId - 1]?.src"/>
+                </span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
+          <li class="dropdown-item" *ngFor="let l of languages">
+            <a href="javascript:void(0)"
+               (click)="onChangeLanguage(l.id)"
+               *ngIf="l.id != userInfo.languageId"
+               class="d-flex flex-row text-black bold">
+              <img [src]="l.src"/>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pull-left p-r-10 p-t-10 fs-16 font-heading">
+        <span class="semi-bold" id="user-info" name="user-info">{{userInfo?.firstName}}</span>
+        <span class="text-master">{{userInfo?.lastName}}</span>
+      </div>
+
+      <div class="dropdown pull-right" ngbDropdown>
+        <button class="profile-dropdown-toggle" type="button" ngbDropdownToggle aria-haspopup="true"
+                aria-expanded="false">
+                    <span class="thumbnail-wrapper d32 circular inline m-t-5">
+                <img [src]="userInfo.imageUrl || '../../../../../assets/img/no-avatar.png'" alt=""
+                     data-src="assets/img/profiles/avatar.jpg" data-ui-jq="unveil"
+                     data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="32" height="32"/>
+                </span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
+          <li class="dropdown-item">
+            <a href="javascript:void(0)" (click)="viewProfile()" class="d-flex flex-row text-black bold">
+              <span><i class="pg-settings_small bold"></i></span>
+              <span class="bold m-l-10">Profile</span>
+            </a>
+          </li>
+          <!--<li class="dropdown-item"><a href=""><i class="pg-outdent"></i> Feedback</a>-->
+          <!--</li>-->
+          <!--<li class="dropdown-item"><a href=""><i class="pg-signals"></i> Help</a>-->
+          <!--</li>-->
+          <li class="dropdown-item bg-master-lighter">
+            <a href="javascript:void(0)" (click)="logout()" class="d-flex flex-row text-black">
+              <span><i class="pg-power bold"></i></span>
+              <span class="bold m-l-10">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- END User Info-->
+  </div>
+</div>
