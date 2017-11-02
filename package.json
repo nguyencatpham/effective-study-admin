@@ -6,7 +6,7 @@
   "scripts": {
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && webpack --config config/webpack.prod.js  --progress --profile --bail",
     "build:aot": "npm run build:aot:prod",
-    "build:dev": "npm run clean:dist && webpack --config config/webpack.dev.js --progress --profile",
+    "build:dev": "npm run clean:dist && webpack --config config/webpack.config.js --progress --profile",
     "build:prod": "npm run clean:dist && webpack --config config/webpack.prod.js  --progress --profile --bail",
     "build": "npm run build:dev",
     "clean:dll": "npm run rimraf -- dll",
